@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поздравление с 8 марта / Congratulations on March 8</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%; /* Устанавливаем высоту на 100% */
+            margin: 0; /* Убираем отступы */
+            overflow: hidden; /* Убираем прокрутку */
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f2d0d0;
+            font-family: "Montserrat", sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #d5006d;
+        }
+
+        #congratulations {
+            margin-bottom: 20px;
+            font-family: "Montserrat", sans-serif;
+            transition: 150ms ease-in-out;
+        }
+
+        #movingButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #d5006d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        #movingButton:hover {
+            background-color: #a0004d;
+        }
+
+        #nomoving {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #d5006d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        #response {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #d5006d;
+            display: none; /* Скрываем изначально */
+        }
+        #congratulations:hover{
+            color: #a0004d;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>С 8 Марта!</h1>
+        <p id="congratulations">Вы любите сотрудников военкомата города<br>Каменска-Уральского?</p>
+        <button id="movingButton">Нет, не люблю</button>
+        <button id="nomoving">Да, люблю</button>
+        <p id="response">Я так и знал!</p> <!-- Элемент для ответа -->
+    </div>
+
+    <script>
+        const button = document.getElementById('movingButton');
+        const buttonNo = document.getElementById('nomoving');
+        const response = document.getElementById('response');
+
+        button.addEventListener('mouseover', () => {
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+            const maxX = window.innerWidth - buttonWidth;
+            const maxY = window.innerHeight - buttonHeight;
+            const randomX = Math.random() * maxX; // Генерация случайного X
+            const randomY = Math.random() * maxY; // Генерация случайного Y
+            button.style.position = 'absolute';
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+        });
+
+        // Обработчик для кнопки "Да, люблю"
+        buttonNo.addEventListener('click', () => {
+            response.style.display = 'block'; // Показываем текст
+        });
+    </script>
+
+</body>
+</html>
